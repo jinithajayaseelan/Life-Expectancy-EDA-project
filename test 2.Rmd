@@ -1,0 +1,1062 @@
+---
+title: "Life Expectancy project"
+output: html_document
+---
+
+By Jinitha. M. J.
+
+
+USN- 1NT20SDS04
+
+to load the data set
+```{r}
+df= read.csv("Life expectancy.csv")
+```
+
+to read the head of the dataset
+```{r}
+head(df)
+```
+To show the number of specified rows i.e for n=8, it will display the first 8 rows
+
+```{r}
+head(df, n=8)
+```
+To display the last Rows of your data
+```{r}
+tail(df)
+```
+To view the previously Loaded named object we use ls() command
+```{r}
+ls()
+```
+for examining the data structure of an object str() command can be used
+```{r}
+str(df)
+```
+
+to pick out item from third row and third columns:
+```{r}
+df[3,4]
+```
+
+```{r}
+class(df$posttest)
+```
+```{r}
+class(dimnames(df))
+```
+to show a different number of rows 
+```{r}
+head(df, n=7)
+```
+to display the bottom 6 lines in the data
+```{r}
+tail(df)
+```
+to show a different number of rows
+```{r}
+tail(df, n=5)
+```
+To get summary about an Data frame and particular columns  
+```{r}
+summary(df)
+```
+
+to return the structure of the given object with further attributes set
+```{r}
+head(structure(df))
+```
+
+
+
+
+to view all the named objects you have at once
+```{r}
+ls.str(df)
+```
+
+used to narrow down your focus
+```{r}
+ls.str(pattern = 'df')
+```
+
+to view all the columns or rows
+```{r}
+names(df)
+
+```
+
+to view all the rows
+```{r}
+row.names(df)
+```
+to represent names of all the coloumns
+```{r}
+colnames(df)
+```
+
+To see both rows and columns names at the once
+```{r}
+dimnames(df)
+```
+to determine the number of items in an object
+```{r}
+length(df)
+
+```
+
+```{r}
+tdf = attach(df)
+tdf
+```
+
+```{r}
+head(stack(df))
+```
+
+to get the index
+```{r}
+head(order(df$Year))
+```
+to identify the class of a column
+```{r}
+class(df$Year)
+```
+Summary of a column
+```{r}
+summary(df$Year)
+```
+
+To find the mean of a column
+```{r}
+mean(df$Year)
+```
+
+To find the median of a column
+```{r}
+median(df$Year)
+```
+to find the median absolute deviation
+```{r}
+mad(df$Year)
+
+```
+to find the mode absolute deviation
+
+```{r}
+mode(df$Year)
+```
+to find the variance absolute deviation
+
+```{r}
+var(df$Year)
+```
+
+to find the sd absolute deviation
+```{r}
+sd(df$Year)
+```
+to find the quartile absolute deviation
+
+```{r}
+quantile(df$Year)
+```
+
+Returns a five number summary 
+```{r}
+fivenum(df$Year)
+```
+
+
+
+```{r}
+df$Year[3]
+```
+
+
+```{r}
+df$Year[1:5]
+```
+To find the max and min numeric object
+
+```{r}
+max(df$Year)
+```
+
+
+```{r}
+min(df$Year)
+```
+sort in ascending order
+
+```{r}
+head(sort(df$Year))
+```
+
+
+```{r}
+min(df$Life.expectancy)
+```
+
+
+```{r}
+head(sort(df$Life.expectancy))
+```
+
+
+ to Compare Two Variances
+```{r}
+var.test(df$Year, df$Life.expectancy)
+```
+to get an index
+
+```{r}
+head(order(df$Year))
+```
+
+to get the rank
+```{r}
+head(rank(df$Year), n=10)
+```
+to display the selceted rows and colomns
+
+```{r}
+df[3,3]
+```
+
+
+```{r}
+df[3, 1:2]
+```
+
+
+```{r}
+df[3, 2:3]
+```
+to covert data frame to matrix
+
+```{r}
+head(as.matrix(df))
+```
+to assemble a matrix/data frames
+
+```{r}
+head(rbind(df))
+
+```
+
+
+```{r}
+head(cbind(df))
+
+```
+
+Cumulative Commands
+```{r}
+head(cumsum(df$Year))
+
+```
+
+
+```{r}
+head(cumsum(df$Life.expectancy))
+
+```
+
+
+```{r}
+head(cummin(df$Year))
+
+```
+
+
+```{r}
+head(cummin(df$Life.expectancy))
+
+```
+
+
+```{r}
+head(cumprod(df$Year))
+```
+
+to specify which columns of data you want to use to create your contingency table
+```{r}
+table(df$Year)
+
+```
+
+
+```{r}
+head(as.table(df$Year))
+```
+
+to check if dataframe is extracted
+```{r}
+is.data.frame(df)
+```
+
+```{r}
+is.table(df)
+```
+to form the basis of a logical test
+
+```{r}
+if(class(df) == 'data.frame') TRUE else FALSE
+```
+
+to creates a simple index
+```{r}
+seq_along(df)
+```
+to create a basic stem and leaf plot
+
+```{r}
+stem(df$Year)
+```
+
+
+to increase the number of bins
+
+```{r}
+stem(df$Year, scale = 2)
+```
+
+to create a Histogram 
+```{r}
+hist(df$Year)
+```
+
+
+```{r}
+hist(df$Life.expectancy)
+
+```
+
+
+```{r}
+hist(df$Year, col = 'blue', xlab = 'Year', ylim = c(0, 0.1), freq = FALSE)
+```
+to find the density
+
+```{r}
+density(df$Year)
+```
+
+Density Function to Draw a Graph
+```{r}
+plot(density(df$Year))
+```
+
+
+```{r}
+plot(density(df$Life.expectancy))
+
+```
+
+
+```{r}
+hist(df$Year, freq = F)
+lines(density(df$Year), lty = 2)
+lines(density(df$Year, k = 'rectangular'))
+```
+
+
+```{r}
+hist(df$Life.expectancy, freq = F)
+lines(density(df$Life.expectancy), lty = 2)
+lines(density(df$Life.expectancy, k = 'rectangular'))
+```
+to generate n random numbers from the normal distribution
+
+```{r}
+head(rnorm(df$Year, mean = 0, sd = 1))
+  
+```
+
+Returns the probability for the quantile q
+
+```{r}
+head(pnorm(df$Year, mean = 0, sd = 1))
+```
+Returns the quantile for a given probability p
+
+
+```{r}
+head(qnorm(df$Year, mean = 0, sd = 1))
+```
+
+
+Gives the density function for values x
+
+```{r}
+head(dnorm(df$Year, mean = 0, sd = 1))
+```
+
+Quantile-Quantile Plot
+
+```{r}
+qqnorm(df$Year)
+```
+
+Quantile-Quantile Plot
+
+```{r}
+
+qqnorm(df$Life.expectancy)
+
+```
+
+
+
+```{r}
+qqnorm(df$Year, main = 'QQ plot of df$Year', xlab = 'Theoretical', 
+ylab = 'Quantiles for df$Year')
+qqline(df$Year, lwd = 2, lty = 2)
+```
+
+
+
+```{r}
+qqplot(df$Year, df$Life.expectancy)
+```
+
+
+
+```{r}
+qqp = qqplot(df$Year, df$Life.expectancy)
+abline(lm(qqp$y ~ qqp$x))
+```
+
+
+
+```{r}
+t.test(df$Year, df$Life.expectancy)
+```
+
+
+```{r}
+t.test(df$Year, df$Life.expectancy, var.equal = TRUE)
+```
+
+
+```{r}
+t.test(df$Year, mu = 5)
+
+```
+
+
+```{r}
+t.test(df$Life.expectancy, mu = 5)
+
+```
+
+Using Directional Hypotheses
+```{r}
+
+t.test(df$Year, mu = 5, alternative = 'greater')
+```
+
+Using Directional Hypotheses
+```{r}
+
+t.test(df$Life.expectancy, mu = 5, alternative = 'greater')
+```
+
+formula Syntax and Subsetting Samples in the t-Test
+```{r}
+
+t.test(df$Year ~ df$Entity, data = df, subset = df$Entity %in% c('Australia' , 'Brazil'))
+```
+
+
+```{r}
+t.test(df$Year ~ df$Entity, data = df, subset = df$Entity %in% c('Australia' , 'Canada'))
+```
+
+
+```{r}
+t.test(df$Year ~ df$Entity, data = df, subset = df$Entity %in% c('Canada' , 'Brazil'))
+```
+
+Two-Sample U-Test
+```{r}
+wilcox.test(df$Year, df$Life.expectancy)
+```
+
+basic correlation between x and y
+
+```{r}
+cor(df$Year, df$Life.expectancy)
+```
+
+Determines covariance between x and y 
+```{r}
+
+x = cov(df$Year, df$Life.expectancy)
+x
+```
+
+to determine the correlation from a matrix of covariance
+
+```{r}
+v = as.matrix(x)
+cov2cor(v)
+```
+
+Significance Testing in Correlation Tests
+
+```{r}
+cor.test(df$Year, df$Life.expectancy)
+```
+
+
+```{r}
+chisq.test(df$Year
+           )
+```
+
+
+```{r}
+chisq.test(df$Life.expectancy)
+```
+
+
+```{r}
+boxplot(df$Year)
+```
+
+
+```{r}
+boxplot(df$Life.expectancy)
+```
+
+
+```{r}
+boxplot(df$Year, df$Life.expectancy)
+```
+
+
+```{r}
+boxplot(df$Year ~ df$Entity, data = df)
+```
+
+
+```{r}
+boxplot(df$Life.expectancy ~ df$Entity, data = df)
+```
+
+Horizontal Boxplots
+```{r}
+boxplot(df$Life.expectancy, horizontal = T)
+```
+
+with title
+```{r}
+
+boxplot(df$Life.expectancy, horizontal = T)
+title(xlab = 'Life expectancies')
+```
+
+```{r}
+boxplot(df$Year, horizontal = T)
+```
+
+
+```{r}
+boxplot(df$Year, horizontal = T)
+title(xlab = 'Year')
+```
+
+
+
+```{r}
+library(dplyr)
+```
+
+
+```{r}
+
+temp = df %>% filter(df$Entity == "Australia")
+plot(temp$Life.expectancy, temp$Year, pch = 25)
+```
+
+
+```{r}
+temp = df %>% filter(df$Entity == "Australia")
+plot(temp$Year, temp$Life.expectancy, pch = 25)
+```
+
+
+```{r}
+temp = df %>% filter(df$Entity == "Brazil")
+plot(temp$Life.expectancy, temp$Year, pch = 25)
+```
+
+
+```{r}
+temp = df %>% filter(df$Entity == "Canada")
+plot(temp$Year, temp$Life.expectancy, pch = 25)
+```
+
+
+```{r}
+with(df, plot(df$Year[df$Entity == 'Brazil'], pch = 0))
+
+```
+
+
+```{r}
+with(df, plot(df$Life.expectancy[df$Entity == 'Canada'], pch = 0))
+
+```
+
+
+
+ to get the particular values based on row
+```{r}
+with(df, (df$Life.expectancy[df$Entity == 'Brazil']))
+```
+
+
+```{r}
+with(df, (df$Life.expectancy[df$Entity == 'Canada']))
+```
+
+
+```{r}
+with(df, (df$Year[df$Entity == 'Brazil']))
+```
+to creates a matrix of scatter plots.
+
+
+```{r}
+pairs(~ Life.expectancy + Year, data = temp)
+```
+
+
+```{r}
+pairs(~Year  + Life.expectancy, data = temp)
+
+```
+
+Line plot
+
+```{r}
+
+plot(temp$Year, type = 'l' )
+```
+
+
+```{r}
+plot(temp$Life.expectancy, type = 'l' )
+
+```
+
+
+```{r}
+plot(temp$Year, type = 'b')
+```
+
+
+```{r}
+plot(temp$Life.expectancy, type = 'b')
+```
+Pie chart
+
+```{r}
+
+pie(temp$Life.expectancy, labels = 'Life expextancy')
+```
+
+
+```{r}
+plot(temp$Year, type = 'b')
+```
+
+
+```{r}
+pie(temp$Year, labels = 'year')
+```
+Cleveland Dot Charts
+
+```{r}
+
+dotchart(temp$Year)
+```
+
+
+```{r}
+dotchart(temp$Life.expectancy)
+```
+
+Bar plot
+```{r}
+
+barplot(temp$Year)
+title(xlab = 'Australia', ylab = 'Year')
+box()
+```
+
+
+```{r}
+barplot(temp$Life.expectancy)
+title(xlab = 'Brazil
+      ', ylab = 'Life expectancy')
+box()
+```
+
+
+```{r}
+barplot(temp$Year)
+title(xlab = 'Brazil', ylab = 'Year')
+box()
+```
+
+to get the column’s diff level(type) counts
+```{r}
+
+table(df$Entity)
+```
+
+
+```{r}
+barplot(temp$Life.expectancy, horiz = T)
+title(xlab = 'Australia', ylab = 'Life expectancy')
+box()
+```
+
+
+```{r}
+barplot(temp$Life.expectancy, horiz = T)
+title(xlab = 'Canada', ylab = 'Life expectancy')
+box()
+```
+
+
+```{r}
+barplot(temp$Life.expectancy, horiz = T)
+title(xlab = 'Brazil', ylab = 'Life expectancy')
+box()
+```
+
+the analysis of variance 
+```{r}
+
+temp.aov = na.omit(aov(temp$Life.expectancy ~ temp$Year, data = temp))
+temp.aov
+```
+
+
+```{r}
+temp.aov = na.omit(aov(temp$Year ~ temp$Life.expectancy, data = temp))
+temp.aov
+```
+
+To see the classic ANOVA table
+```{r}
+
+summary(temp.aov)
+```
+
+
+```{r}
+
+factor(df$Entity)
+```
+
+creating new testCol
+```{r}
+testCol = c(rep(df$Year - df$Life.expectancy, length(df)))
+head(testCol)
+
+
+```
+
+
+```{r}
+testRow = c('Australia', 1803, 34.05)
+testRow
+```
+
+
+```{r}
+testCol = c(rep(df$Life.expectancy - df$Year, length(df)))
+head(testCol)
+```
+
+
+```{r}
+testRow = c('Spain', 1919, 41.12)
+testRow
+```
+
+Adding Rows or Columns
+```{r}
+
+test = data.frame(df, testCol)
+head(test)
+```
+
+
+```{r}
+test = df
+test['testRow',] = testRow
+tail(test)
+```
+
+
+```{r}
+test = df
+test["Test",] = NA
+tail(test)
+```
+
+Column Indexes
+```{r}
+
+col(temp, as.factor = F)
+```
+
+Extracting two(2) columns from df
+```{r}
+x = df[ , 1:2]
+head(x)
+```
+
+
+```{r}
+x = df[ , 2:3]
+head(x)
+```
+
+Simple Column and Row Summaries
+```{r}
+colMeans(x)
+```
+
+
+```{r}
+rowMeans(x)
+
+```
+
+
+```{r}
+colSums(x)
+```
+
+
+```{r}
+rowSums(x)
+```
+to apply a function over all the rows or columns of a data frame
+
+```{r}
+apply(df[ , 1:3], 2, mean)
+```
+
+
+```{r}
+apply(df[ , 1:2], 1, mean)
+```
+
+
+```{r}
+apply(df[ , 1:3], 2, median)
+```
+
+
+```{r}
+apply(df[ , 2:3], 2, median)
+```
+
+
+```{r}
+apply(df[ , 1:3], 2, var)
+```
+
+```{r}
+apply(df[ , 1:3], 2, var)
+```
+
+Using tapply() to Summarize Using a Grouping Variable
+```{r}
+
+tapply(df$Year, df$Entity, FUN = mean)
+```
+
+
+```{r}
+tapply(df$Life.expectancy, df$Entity, FUN = mean)
+```
+
+
+```{r}
+aggregate(df[ , 1:3], by = list(df$Entity), FUN = mean)
+```
+
+uding cbind()
+```{r}
+
+aggregate(cbind(df$Life.expectancy, df$Year), data = df, by = list(df$Entity), FUN = mean)
+```
+
+
+```{r}
+aggregate(df$Life.expectancy ~ df$Entity, data = df, FUN = mean)
+```
+
+
+```{r}
+aggregate(df$Year ~ df$Entity, data = df, FUN = mean)
+```
+The na.omit() command strips out unwanted NA items from vectors and data frames.
+```{r}
+
+head(na.omit(df))
+```
+
+
+```{r}
+objects(df)
+```
+
+
+```{r}
+ls(df)
+```
+
+
+
+Simple linear regression
+```{r}
+cor.test(~ df$Year + df$Life.expectancy, data = df)
+```
+
+
+```{r}
+dflm = lm(Year ~ Entity, data = df)
+dflm
+```
+
+extract the coefficients
+
+```{r}
+coef(dflm)
+
+```
+
+obtain confidence intervals
+
+```{r}
+
+confint(dflm)
+```
+
+Fitted Values
+```{r}
+
+head(fitted(dflm))
+
+
+
+```
+
+Residuals
+```{r}
+head(residuals(dflm))
+```
+
+Formula
+```{r}
+formula(dflm)
+
+```
+
+
+```{r}
+dflm$call
+```
+
+
+```{r}
+formula(df)
+```
+Command for Error Bars
+```{r}
+
+df.m = apply(df[,1:2], 2, mean)
+df.m
+
+```
+
+
+```{r}
+df.sd = apply(df[ , 1:3], 2, sd)
+df.sd
+```
+
+
+```{r}
+df.s = apply(df[,3:2], 2, sum)
+df.s
+```
+
+
+```{r}
+df.1 = df.s/df.m
+df.1
+
+```
+
+
+```{r}
+df.se = df.sd / sqrt(df.1)
+df.se
+
+```
+
+
+```{r}
+df.m + df.se
+```
+
+
+```{r}
+max(df.m + df.se)
+```
+
+
+```{r}
+df.max = round(max(df.m + df.se) + 0.5, 0)
+df.max
+```
+
+
+
+
+To Create Mathematical Expressions
+```{r}
+plot(1:10, 1:10, type = 'n')
+opt = par(cex = 1.5)
+text(1, 1, expression(hat(x)))
+text(2, 2, expression(alpha==x))
+text(3, 3, expression(beta==y))
+text(4, 4, expression(frac(x, y)))
+text(5, 5, expression(sum(x)))
+text(6, 6, expression(sum(x^2)))
+text(7, 7, expression(bar(x) == sum(frac(x[i], n), i==1, n)))
+text(8, 8, expression(sqrt(x)))
+text(9, 9, expression(sqrt(x, 3)))
+```
+
+
+
+
+
+
+
+
+
